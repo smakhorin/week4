@@ -46,8 +46,9 @@ if (count($url) == 1)
               function fetchResult() {
                 let url = document.getElementById("inp").value
                 fetch(url)
-                  .then(function(response) {
-                    document.getElementById("inp").value = response.text();
+                  .then(response => response.text())
+                  .then(function(data) {
+                    document.getElementById("inp").value = data;
                   });
               }
             </script>
