@@ -20,6 +20,7 @@ if (count($url) == 1)
       echo 'StepanM';
       break;
     case 'promise':
+      header('Content-Type: text/plain; charset=UTF-8');
       $sample = <<<JS
           function task(x) {
             return  new Promise(function(resolve, reject) {
