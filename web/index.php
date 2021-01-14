@@ -7,10 +7,23 @@ header('Access-Control-Allow-Origin: *');
 
 $url = $_GET['url'];
 
-var_dump($url);
+// Url preprocessing
 $url = rtrim($url, '/');
-var_dump($url);
 $url = filter_var($url, FILTER_SANITIZE_URL);
-var_dump($url);
 $url = explode('/', $url);
-var_dump($url);
+
+if (count($url) == 1)
+{
+  switch($url[0])
+  {
+    case 'login':
+      echo 'StepanM';
+      break;
+    default:
+      http_response_code(404);
+  }
+}
+else
+{
+  http_response_code(404);
+}
