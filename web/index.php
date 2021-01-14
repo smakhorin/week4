@@ -7,4 +7,10 @@ header('Access-Control-Allow-Origin: *');
 
 $url = $_GET['url'];
 
-echo $url;
+var_dump($url);
+$url = rtrim($url, '/');
+var_dump($url);
+$url = filter_var($url, FILTER_SANITIZE_URL);
+var_dump($url);
+$url = explode('/', $url);
+var_dump($url);
