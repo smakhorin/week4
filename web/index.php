@@ -18,11 +18,26 @@ if (count($url) == 1)
   {
     case 'result4':
       $headerXTestValue = $_SERVER['HTTP_X_TEST'];
-      $bodyValue = http_get_request_body();
+      
+      $body = '';
+      $fh   = @fopen('php://input', 'r');
+      if ($fh)
+      {
+        while (!feof($fh))
+        {
+          $s = fread($fh, 1024);
+          if (is_string($s))
+          {
+            $body .= $s;
+          }
+        }
+        fclose($fh);
+      }
+      
       $response = array(
           'message' => 'StepanM',
           'x-result' => $headerXTestValue,
-          'x-body' => $bodyValue
+          'x-body' => $body
         );
       
       header('Content-type: application/json');
