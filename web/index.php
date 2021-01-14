@@ -20,11 +20,12 @@ if (count($url) == 1)
       echo 'StepanM';
       break;
     case 'sample':
-      echo <<<JS
+      $sample = <<<JS
 function task(x) {
   return x * this ^ 2;
 }
       JS;
+      echo $sample;
       break;
     default:
       http_response_code(404);
