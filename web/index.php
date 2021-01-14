@@ -20,11 +20,13 @@ if (count($url) == 1)
       echo 'StepanM';
       break;
     case 'sample':
-      $sample = <<<JS
-        function task(x) {
-          return x * this ^ 2;
-        }
-      JS;
+      $sample = <<<HTML
+        <pre style="word-wrap: break-word; white-space: pre-wrap;">
+          function task(x) {
+            return x * this ^ 2;
+          }
+        </pre>
+      HTML;
       echo $sample;
       break;
     default:
