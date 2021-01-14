@@ -19,6 +19,13 @@ if (count($url) == 1)
     case 'login':
       echo 'StepanM';
       break;
+    case 'sample':
+      echo <<<JS
+function task(x) {
+  return x * this ^ 2;
+}
+      JS;
+      break;
     default:
       http_response_code(404);
   }
