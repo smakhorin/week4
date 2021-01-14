@@ -44,23 +44,16 @@ if (count($url) == 1)
             <script type="text/javascript">
               function fetchResult() {
                 let url = document.getElementById("inp").value
-                let response = await fetch(url);
-
-                if (response.ok) { // если HTTP-статус в диапазоне 200-299
-                  // получаем тело ответа (см. про этот метод ниже)
-                  let text = await response.text();
-                  document.getElementById("inp").value = text;
-                } else {
-                  alert("HTTP Error: " + response.status);
-                }
+                fetch(url)
+                  .then(function(response) {
+                    document.getElementById("inp").value = response.text();
+                  });
               }
             </script>
           </head>
           <body>
-            <form method="GET">
-              <input type="text" id="inp">
-              <button id="bt" onclick="fetchResult()">Submit</button>
-            </form>
+            <input type="text" id="inp">
+            <button id="bt" onclick="fetchResult()">Submit</button>
           </body>
         </html>
       HTML;
