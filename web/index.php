@@ -64,6 +64,7 @@ if (count($url) == 1)
           </body>
         </html>
       HTML;
+      echo $html;
       break;
     default:
       http_response_code(404);
