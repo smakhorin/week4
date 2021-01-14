@@ -21,9 +21,9 @@ if (count($url) == 1)
       break;
     case 'sample':
       $sample = <<<JS
-function task(x) {
-  return x * this ^ 2;
-}
+        function task(x) {
+          return x * this ^ 2;
+        }
       JS;
       echo $sample;
       break;
