@@ -2,7 +2,7 @@
   "require": {
 		"php": ">=7.2",
 		"ext-pecl_http": "*"
-  }
+  },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
   }
