@@ -16,50 +16,18 @@ if (count($url) == 1)
 {
   switch($url[0])
   {
-    case 'login':
-      echo 'StepanM';
-      break;
-    case 'promise':
-      header('Content-Type: text/plain; charset=UTF-8');
-      $sample = <<<JS
-          function task(x) {
-            return  new Promise(function(resolve, reject) {
-              if (x < 18)
-              {
-                resolve("yes");
-              }
-              else
-              {
-                reject("no");
-              }
-            });
-          }
-      JS;
-      echo $sample;
-      break;
-    case 'fetch':
-      $html = <<<HTML
-        <html>
-          <head>
-            <title>Form</title>
-            <script type="text/javascript">
-              function fetchResult() {
-                let url = document.getElementById("inp").value
-                fetch(url)
-                  .then(response => response.text())
-                  .then(function(data) {
-                    document.getElementById("inp").value = data;
-                  });
-              }
-            </script>
-          </head>
-          <body>
-            <input type="text" id="inp">
-            <button id="bt" onclick="fetchResult()">Submit</button>
-          </body>
-        </html>
-      HTML;
-      echo $html;
+    case 'result4':
+      $headerXTestValue = $_SERVER['HTTP_X_TEST'];
+      $bodyValue = http_get_request_body();
+      $response = array(
+          'message' => 'StepanM',
+          'x-result' => $headerXTestValue,
+          'x-body' => $bodyValue
+        );
+      
+      header('Content-type: application/json');
+      header('Access-Control-Allow-Headers: x-test');
+      echo json_encode($response);
       break;
     default:
       http_response_code(404);
