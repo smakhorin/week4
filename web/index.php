@@ -19,15 +19,51 @@ if (count($url) == 1)
     case 'login':
       echo 'StepanM';
       break;
-    case 'sample':
-      $sample = <<<HTML
-        <pre style="word-wrap: break-word; white-space: pre-wrap;">
+    case 'promise':
+      $sample = <<<JS
           function task(x) {
-            return x * this ^ 2;
+            return  new Promise(function(resolve, reject) {
+              if (x < 18)
+              {
+                resolve("yes");
+              }
+              else
+              {
+                reject("no");
+              }
+            });
           }
-        </pre>
-      HTML;
+      JS;
       echo $sample;
+      break;
+    case 'fetch':
+      $html = <<<HTML
+        <html>
+          <head>
+            <title>Form</title>
+            <script type="text/javascript">
+              function fetchResult() {
+                let url = document.getElementById("inp").value
+                let response = await fetch(url);
+
+                if (response.ok) { // если HTTP-статус в диапазоне 200-299
+                  // получаем тело ответа (см. про этот метод ниже)
+                  let text = await response.text();
+                  document.getElementById("inp").value = text;
+                } else {
+                  alert("HTTP Error: " + response.status);
+                }
+              }
+            </script>
+          </head>
+          <body>
+            <form method="GET">
+              <input type="text" id="inp">
+              <button id="bt" onclick="fetchResult()">Submit</button>
+            </form>
+          </body>
+        </html>
+      HTML;
       break;
     default:
       http_response_code(404);
